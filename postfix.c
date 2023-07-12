@@ -20,7 +20,7 @@ void main()
     char a[30];
     scanf("%s",a);
     char e[30];
-    e[0]='('
+    e[0]='(';
     int i=0;
     while(a[i]!='\0')
     {   e[i+1]=a[i];
@@ -58,6 +58,6 @@ void main()
             n[t++]=em;
     }
     for(int j=0;j<t;j++)
-        printf('%c',n[j]);
-    printf('\n');
+        printf("%c",n[j]);
+    printf("\n");
 }
