@@ -1,5 +1,5 @@
 #include <stdio.h>
-int prio(char m)
+int prio(char m)//This function will get the priority of the symbol
 {
     int p;
     if(m=='+'||m=='-')
