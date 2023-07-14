@@ -16,7 +16,7 @@ int prio(char m)//This function will get the priority of the symbol
 }
 void main()
 {
-    printf("Enter the expression");
+    printf("Enter the expression\n");
     char a[30];
     scanf("%s",a);
     char e[30];
@@ -57,7 +57,54 @@ void main()
         else
             n[t++]=em;
     }
+    printf("Postfix Expression is\n");
     for(int j=0;j<t;j++)
         printf("%c",n[j]);
     printf("\n");
+    double res[30];f=0;
+    for(int j=0;j<t;j++)//the result of the expression is calculated here
+    {   char em=n[j];
+        double num1,num2;
+        if(em=='+'||em=='-'||em=='*'||em=='/'||em=='^')
+        {   num2=res[--f];
+            num1=res[--f];
+            switch(em)
+            {   case '+':res[f++]=num1+num2;break;
+                case '-':res[f++]=num1-num2;break;
+                case '*':res[f++]=num1*num2;break;
+                case '/':res[f++]=num1/num2;break;
+                case '^':{double pow=num1;
+                          for(int k=1;k<num2;k++)
+                          pow*=num1;
+                          res[f++]=pow;
+                          break;}
+                default:break;
+            }
+        }
+        else
+        {   printf("Enter value of %c\n",em);
+            scanf("%lf",&res[f++]);
+        }
+    }
+    printf("Final Answer = %lf\n",res[0]);
 }
+
+/*OUTPUT
+Enter the expression
+a+b*c-d/e*f
+Postfix Expression is
+abc*+de/f*-
+Enter value of a
+1
+Enter value of b
+2
+Enter value of c
+3
+Enter value of d
+4
+Enter value of e
+5
+Enter value of f
+6
+Final Answer = 2.200000
+ ^C*/
